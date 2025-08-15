@@ -6,7 +6,7 @@ import User from "../models/userModel";
 const JWT_SECRET = process.env.JWT_SECRET || "secretkey";
 
 export const registerUser = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -15,7 +15,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword });
 
     await newUser.save();
 

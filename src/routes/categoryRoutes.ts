@@ -1,10 +1,10 @@
-import express from "express";
-import {
+import { Router } from "express";
+const {
   createCategory,
   getCategories,
-} from "../controllers/categoryController";
+} = require("../controllers/categoryController");
 
-const router = express.Router();
+const router = Router();
 
 router.get("/", getCategories);
 router.post("/", createCategory);

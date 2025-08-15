@@ -6,6 +6,7 @@ export interface Iuser extends Document {
 }
 
 const userSchema = new Schema({
+  name: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
