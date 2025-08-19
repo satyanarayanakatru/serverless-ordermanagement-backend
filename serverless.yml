@@ -1,0 +1,20 @@
+service: order-management-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+
+functions:
+  api:
+    handler: app.handler
+    events:
+      - httpApi: "*"
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
